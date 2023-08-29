@@ -1,0 +1,18 @@
+version: "2"
+services:
+  extractor:
+    build: .
+    image: ad_conditioning_black_screen_lenient:0.1.0
+    environment:
+      AWS_DEFAULT_PROFILE: aws-video-data:aws-video-data-admin
+      EXTRACTOR_NAME: ad_conditioning_black_screen_lenient
+      EXTRACTOR_JOB_ID: 123
+      # Default
+      EXTRACTOR_CONTENT_URL: s3://video-data-extraction-prod/videos/ipv/brooklynninenine_101_air_--361J8-201707171752394753-6c4d78fc-5dac-4be8-a6ad-eb827a11c740.mp4
+      EXTRACTOR_CONTENT_PATH: /var/contentai/brooklynninenine_101.mp4
+      EXTRACTOR_RESULT_PATH: /var/contentai/
+      EXTRACTOR_METADATA: '{"foo":"bar"}'
+      RUNNING_IN_CONTENTAI: "false"
+    volumes: 
+      - ${PWD}/:/var/contentai/
+      - $HOME/.aws/credentials:/root/.aws/credentials:ro

@@ -1,0 +1,7 @@
+*.mp4
+notes.txt
+output_file*.csv
+output_file*.txt
+jobs/
+.DS_Store
+*.csv
